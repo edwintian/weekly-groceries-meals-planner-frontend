@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
-class groceries extends Component {
+class groceries extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,9 +12,10 @@ class groceries extends Component {
   }
 
   async componentDidMount() {
-    const groceries = (await axios.get(
-      "http://localhost:5000/users/5a466eff-79e0-4002-9e39-15ffc9e192d7/groceries"
-    )).data;
+    const URL =
+      process.env.REACT_APP_SERVER_BACKEND_BASE_URL +
+      "/5a466eff-79e0-4002-9e39-15ffc9e192d7/groceries";
+    const groceries = (await axios.get(URL)).data;
     this.setState({
       groceries
     });

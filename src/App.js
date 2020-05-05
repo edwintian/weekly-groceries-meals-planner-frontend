@@ -13,6 +13,10 @@ class App extends React.Component {
     };
   }
 
+  updateAuthenticatedState = isUserAuthenticated => {
+    this.setState({ isAuthenticated: isUserAuthenticated });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -23,7 +27,7 @@ class App extends React.Component {
               <Groceries />
             </Fragment>
           ) : (
-            <Login />
+            <Login updateAuthenticatedState={this.updateAuthenticatedState}/>
           )}
         </div>
       </BrowserRouter>
