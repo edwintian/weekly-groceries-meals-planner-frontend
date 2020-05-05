@@ -9,12 +9,16 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      userId: ""
     };
   }
 
-  updateAuthenticatedState = isUserAuthenticated => {
-    this.setState({ isAuthenticated: isUserAuthenticated });
+  updateAuthenticatedState = (isUserAuthenticated, userId) => {
+    this.setState({
+      isAuthenticated: isUserAuthenticated,
+      userId: userId
+     });
   };
 
   render() {
@@ -24,7 +28,7 @@ class App extends React.Component {
           {this.state.isAuthenticated ? (
             <Fragment>
               <NavBar />
-              <Groceries />
+              <Groceries userId={this.state.userId}/>
             </Fragment>
           ) : (
             <Login updateAuthenticatedState={this.updateAuthenticatedState}/>

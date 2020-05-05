@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import "./Login.css";
 
 class Login extends React.Component {
@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const URL = process.env.REACT_APP_SERVER_BACKEND_BASE_URL + "/login";
+    const URL = "/users/login";
 
     const payload = {
       username: this.state.username,
@@ -26,17 +26,22 @@ class Login extends React.Component {
     };
 
     axios
-      .post(URL, payload, {
-        headers: {
-          "content-type": "application/json"
-        }
-      })
-      .then((response) => {
+      .post(
+        URL,
+        payload,
+        {
+          headers: {
+            "content-type": "application/json"
+          }
+        },
+      )
+      .then(response => {
         if (Number(response.status) === 200) {
-          this.props.updateAuthenticatedState(true);
+          const userId = response.data.split("as ")[1];
+          this.props.updateAuthenticatedState(true, userId);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
