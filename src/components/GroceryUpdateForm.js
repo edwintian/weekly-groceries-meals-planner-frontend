@@ -50,7 +50,7 @@ class GroceryUpdateForm extends React.Component {
       unit: this.state.unit
     };
 
-    const method = this.props.location.state.method || "put";
+    let method = this.props.location.state.method || "put";
 
     axios
       [method](URL, payload, {
@@ -60,7 +60,6 @@ class GroceryUpdateForm extends React.Component {
       })
       .then(response => {
         if (Number(response.status) === 201) {
-          console.log(response);
         } else {
           this.setState({ showErrorMsg: true });
         }
@@ -73,7 +72,6 @@ class GroceryUpdateForm extends React.Component {
   };
 
   render() {
-    console.log(this);
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>

@@ -35,7 +35,7 @@ class Groceries extends React.Component {
             </thead>
             <tbody>
               {this.state.groceries &&
-                this.state.groceries.map(item => (
+                this.state.groceries.filter(item => item.quantity > 0).map(item => (
                   <tr key={item.userIdWithItemName}>
                     <td>
                       {
