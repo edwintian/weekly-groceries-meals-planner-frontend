@@ -58,7 +58,6 @@ class Register extends React.Component {
         if (Number(response.status) === 201) {
           this.setState({ showRegisterSuccessMsg: true });
         } else {
-          console.log(response);
           this.setState({ showRegisterErrorMsg: true });
         }
       })
@@ -105,7 +104,7 @@ class Register extends React.Component {
           )}
           {this.state.showRegisterSuccessMsg && (
             <p>
-              Registration successful, please click on the login link to login.
+              Registration successful, please click on the Dashboard link to login.
             </p>
           )}
         </form>

@@ -60,10 +60,8 @@ class Login extends React.Component {
         } else {
           this.setState({ showLoginErrorMsg: true });
         }
-        console.log(response);
       })
       .catch(error => {
-        console.log(error);
         this.setState({ showLoginErrorMsg: true });
       });
   };
@@ -100,7 +98,7 @@ class Login extends React.Component {
           {this.state.showLoginErrorMsg && (
             <p>
               Your login credentials could not be verified, please try again. If
-              you are a new user, please click on the register link.
+              you are a new user, please click on the Register link.
             </p>
           )}
         </form>

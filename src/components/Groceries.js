@@ -68,7 +68,7 @@ class Groceries extends React.Component {
                 }
               }}
             >
-              Add new item
+              Add new grocery
             </Link>
           }
         </div>
