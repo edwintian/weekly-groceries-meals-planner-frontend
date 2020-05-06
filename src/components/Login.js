@@ -10,7 +10,6 @@ class Login extends React.Component {
       username: "",
       password: "",
       showLoginErrorMsg: false,
-      promptUserToHitDashboard: false
     };
   }
 
@@ -58,7 +57,6 @@ class Login extends React.Component {
         if (Number(response.status) === 200) {
           const userId = response.data.split("as ")[1];
           this.props.updateAuthenticatedState(true, userId);
-          this.setState({ promptUserToHitDashboard: true });
         } else {
           this.setState({ showLoginErrorMsg: true });
         }
@@ -103,13 +101,6 @@ class Login extends React.Component {
             <p>
               Your login credentials could not be verified, please try again. If
               you are a new user, please click on the register link.
-            </p>
-          )}
-
-          {this.state.promptUserToHitDashboard && (
-            <p>
-              You have login successfully, proceed to dashboard link to view
-              your dashboard.
             </p>
           )}
         </form>

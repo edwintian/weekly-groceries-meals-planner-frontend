@@ -22,17 +22,7 @@ export default props => (
           />
         )}
       />
-      <Route
-        exact
-        path="/dashboard/:id"
-        render={() => (
-          <GroceryUpdateForm
-            isAuthenticated={props.isAuthenticated}
-            userId={props.userId}
-            updateAuthenticatedState={props.updateAuthenticatedState}
-          />
-        )}
-      />
+      <Route exact path="/dashboard/:id" component={GroceryUpdateForm} />
       <Route exact path="/register" component={Register} />
       <Route
         exact

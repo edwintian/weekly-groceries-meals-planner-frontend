@@ -7,10 +7,9 @@ class GroceryUpdateForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemname: this.props.match.params.id || "",
+      itemname: "",
       quantity: "",
       unit: "",
-      isAuthenticated: false,
       showErrorMsg: false
     };
   }
@@ -43,7 +42,7 @@ class GroceryUpdateForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const URL = "/users/" + this.props.location.state.userId + "/groceries";
+    const URL = "/users/" + this.props.userId + "/groceries";
 
     const payload = {
       itemName: this.state.itemname,
@@ -70,16 +69,16 @@ class GroceryUpdateForm extends React.Component {
   };
 
   render() {
+    console.log(this);
     return (
       <div className="Login">
-        <h2>{!this.props.match.params.id && "New Item"}</h2>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="itemname" bssize="large">
             <FormLabel>itemname</FormLabel>
             <FormControl
               autoFocus
               type="itemname"
-              value={this.props.match.params.id || this.state.itemname}
+              value={this.state.itemname}
               onChange={e => this.setState({ itemname: e.target.value })}
             />
           </FormGroup>

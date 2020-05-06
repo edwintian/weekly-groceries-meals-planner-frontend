@@ -24,7 +24,7 @@ class Groceries extends React.Component {
   render() {
     return (
       <div className="container">
-        <h2> Inventory </h2>
+        <h2> What You Have Now </h2>
         <div className="table">
           {this.state.groceries === null && <p>Loading groceries...</p>}
           <table>
