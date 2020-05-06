@@ -1,15 +1,16 @@
 import React from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import axios from "../utils/axiosInstance";
-import "./Login.css";
+import "./Register.css";
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
-      showLoginErrorMsg: false
+      showRegisterErrorMsg: false,
+      showRegisterSuccessMsg: false
     };
   }
 
@@ -40,7 +41,7 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const URL = "/users/login";
+    const URL = "/users/register";
 
     const payload = {
       username: this.state.username,
@@ -54,21 +55,21 @@ class Login extends React.Component {
         }
       })
       .then(response => {
-        if (Number(response.status) === 200) {
-          const userId = response.data.split("as ")[1];
-          this.props.updateAuthenticatedState(true, userId);
+        if (Number(response.status) === 201) {
+          this.setState({ showRegisterSuccessMsg: true });
         } else {
-          this.setState({ showLoginErrorMsg: true });
+          console.log(response);
+          this.setState({ showRegisterErrorMsg: true });
         }
       })
       .catch(error => {
-        this.setState({ showLoginErrorMsg: true });
+        this.setState({ showRegisterErrorMsg: true });
       });
   };
 
   render() {
     return (
-      <div className="Login">
+      <div className="Register">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" bssize="large">
             <FormLabel>Username</FormLabel>
@@ -93,12 +94,18 @@ class Login extends React.Component {
             disabled={!this.validateForm()}
             type="submit"
           >
-            Login
+            Register with new credentials
           </Button>
-          {this.state.showLoginErrorMsg && (
+          {this.state.showRegisterErrorMsg && (
             <p>
-              Your login credentials could not be verified, please try again. If
-              you are a new user, please click on the register link.
+              Registration unsuccessful, please try again. Ensure your username
+              is alphanumeric and at least 3 characters long, password must be
+              at least 8 characters long.
+            </p>
+          )}
+          {this.state.showRegisterSuccessMsg && (
+            <p>
+              Registration successful, please click on the login link to login.
             </p>
           )}
         </form>
@@ -106,4 +113,4 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+export default Register;

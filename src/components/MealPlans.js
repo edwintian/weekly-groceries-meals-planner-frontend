@@ -1,21 +1,21 @@
 import React from "react";
 import axios from "../utils/axiosInstance";
 
-class Groceries extends React.Component {
+class MealPlan extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isLoading: false,
-      groceries: null
+      mealplans: null
     };
   }
 
   async componentDidMount() {
-    const URL = "/users/" + this.props.userId + "/groceries";
-    const groceries = (await axios.get(URL)).data;
+    const URL = "/users/" + this.props.userId + "/mealplans";
+    const mealplans = (await axios.get(URL)).data;
     this.setState({
-      groceries
+      mealplans
     });
   }
 
@@ -23,19 +23,17 @@ class Groceries extends React.Component {
     return (
       <div className="container">
         <div className="table">
-          {this.state.groceries === null && <p>Loading groceries...</p>}
+          {this.state.mealplans === null && <p>Loading mealplans...</p>}
           <table>
             <thead>
               <tr>
-                <th>Ingredients</th>
-                <th>Quantity</th>
+                <th>MealPlan</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.groceries &&
-                this.state.groceries.map(item => (
+              {this.state.mealplans &&
+                this.state.mealplans.map(item => (
                   <tr key={item.userIdWithItemName}>
-                    <td>{item.userIdWithItemName}</td>
                     <td>
                       {item.quantity} {item.unit}
                     </td>
@@ -49,4 +47,4 @@ class Groceries extends React.Component {
   }
 }
 
-export default Groceries;
+export default MealPlan;
