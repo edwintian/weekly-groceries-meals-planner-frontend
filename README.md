@@ -66,12 +66,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### Future work
-
-1. Enable Update of existing item - 3pm
-2. Enable addition of new grocery - 4pm
-3. Enable deletion of grocery - 5pm
-4. Consider using redux or js-cookie to preserve user session state
-5. Fix dumb NavBar banner
-6. Integrate with recipes and mealplans API

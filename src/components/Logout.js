@@ -15,17 +15,20 @@ class Logout extends React.Component {
           "content-type": "application/json"
         }
       })
-      .then(response => {
-      })
+      .then(response => {})
       .catch(error => {
         console.log(error);
       });
+    this.props.updateAuthenticatedState(false, "");
   };
 
   render() {
     return (
       <div className="Logout">
-        <p>You have been logged out. To continue browsing this site you will have to login again</p>
+        <p>
+          You have been logged out. To continue browsing this site you will have
+          to login again
+        </p>
       </div>
     );
   }
