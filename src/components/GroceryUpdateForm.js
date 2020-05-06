@@ -50,8 +50,10 @@ class GroceryUpdateForm extends React.Component {
       unit: this.state.unit
     };
 
+    const method = this.props.location.state.method || "put";
+
     axios
-      .put(URL, payload, {
+      [method](URL, payload, {
         headers: {
           "content-type": "application/json"
         }
@@ -75,13 +77,13 @@ class GroceryUpdateForm extends React.Component {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-        <h2>{!this.props.match.params.id && "Add New Item"}</h2>
+        <h2>Update Groceries</h2>
           <FormGroup controlId="itemname" bssize="large">
             <FormLabel>itemname</FormLabel>
             <FormControl
               autoFocus
               type="itemname"
-              value={this.props.match.params.id || this.state.itemname}
+              value={this.state.itemname}
               onChange={e => this.setState({ itemname: e.target.value })}
             />
           </FormGroup>
