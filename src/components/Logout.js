@@ -16,7 +16,6 @@ class Logout extends React.Component {
         }
       })
       .then(response => {
-        console.log(response);
       })
       .catch(error => {
         console.log(error);
@@ -26,7 +25,7 @@ class Logout extends React.Component {
   render() {
     return (
       <div className="Logout">
-        <p>You have been logged out. Visit the homepage to login again</p>
+        <p>You have been logged out. To continue browsing this site you will have to login again</p>
       </div>
     );
   }

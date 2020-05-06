@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "../utils/axiosInstance";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 class Groceries extends React.Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class Groceries extends React.Component {
   render() {
     return (
       <div className="container">
+        <h2> Inventory </h2>
         <div className="table">
           {this.state.groceries === null && <p>Loading groceries...</p>}
           <table>
@@ -35,7 +38,24 @@ class Groceries extends React.Component {
               {this.state.groceries &&
                 this.state.groceries.map(item => (
                   <tr key={item.userIdWithItemName}>
-                    <td>{item.userIdWithItemName}</td>
+                    <td>
+                      {
+                        <Link
+                          to={{
+                            pathname: `/dashboard/${item.userIdWithItemName}`,
+                            state: {
+                              userId: this.props.userId
+                            }
+                          }}
+                        >
+                          {item.userIdWithItemName}
+                        </Link>
+                      }
+                      {/*
+                        <Link to={`/login/${item.userIdWithItemName}`}>{item.userIdWithItemName} </Link>
+                        */}
+                      {/*item.userIdWithItemName*/}
+                    </td>
                     <td>
                       {item.quantity} {item.unit}
                     </td>
@@ -43,6 +63,9 @@ class Groceries extends React.Component {
                 ))}
             </tbody>
           </table>
+          <Button block bssize="small" type="submit">
+            Click to add a new grocery item
+          </Button>
         </div>
       </div>
     );

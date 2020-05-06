@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
-import { BrowserRouter } from "react-router-dom";
-import LogOutNavBar from "./LogOutNavBar";
+import NavBar from "./NavBar";
 import Groceries from "./Groceries";
 import Login from "./Login";
+// import Cookies from 'js-cookie'
 
 class HomePage extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -21,20 +22,24 @@ class HomePage extends React.Component {
     });
   };
 
+  // checkForCookie = () => {
+  //   const jwt = Cookies.get();
+  //   console.log("checking for cookie: ", jwt);
+  // }
+
   render() {
+   //this.checkForCookie();
     return (
-      <BrowserRouter>
         <div>
           {this.state.isAuthenticated ? (
             <Fragment>
-              <LogOutNavBar />
+              <NavBar />
               <Groceries userId={this.state.userId} />
             </Fragment>
           ) : (
             <Login updateAuthenticatedState={this.updateAuthenticatedState} />
           )}
         </div>
-      </BrowserRouter>
     );
   }
 }
