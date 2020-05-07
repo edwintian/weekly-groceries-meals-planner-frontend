@@ -54,6 +54,23 @@ class Groceries extends React.Component {
                     <td>
                       {item.quantity} {item.unit}
                     </td>
+                    <td>
+                      {
+                        <Link
+                          to={{
+                            pathname: `/dashboard/${item.userIdWithItemName}`,
+                            state: {
+                              userId: this.props.userId,
+                              method: "delete",
+                              quantity: "0",
+                              unit: item.unit
+                            }
+                          }}
+                        >
+                          Remove this grocery
+                        </Link>
+                      }
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -61,7 +78,7 @@ class Groceries extends React.Component {
           {
             <Link
               to={{
-                pathname: `/dashboard/new item`,
+                pathname: `/dashboard/new item name`,
                 state: {
                   userId: this.props.userId,
                   method: "post"

@@ -8,8 +8,8 @@ class GroceryUpdateForm extends React.Component {
     super(props);
     this.state = {
       itemname: this.props.match.params.id || "",
-      quantity: "",
-      unit: "",
+      quantity: this.props.location.state.quantity || "",
+      unit: this.props.location.state.unit || "",
       showErrorMsg: false
     };
   }
@@ -50,32 +50,52 @@ class GroceryUpdateForm extends React.Component {
       unit: this.state.unit
     };
 
-    let method = this.props.location.state.method || "put";
-
-    axios
-      [method](URL, payload, {
+    const method = this.props.location.state.method || "put";
+    if (Number(payload.quantity) === 0) {
+      axios
+        .delete(URL, {
+          headers: {
+            "content-type": "application/json"
+          },
+          data: {
+            payload
+          }
+        })
+        .then(response => {
+          console.log(response);
+          if (Number(response.status) === 201) {
+          } else {
+            this.setState({ showErrorMsg: true });
+          }
+        })
+        .catch(error => {
+          this.setState({ showErrorMsg: true });
+        });
+    } else {
+      axios[method](URL, payload, {
         headers: {
           "content-type": "application/json"
         }
       })
-      .then(response => {
-        if (Number(response.status) === 201) {
-        } else {
+        .then(response => {
+          console.log(response);
+          if (Number(response.status) === 201) {
+          } else {
+            this.setState({ showErrorMsg: true });
+          }
+        })
+        .catch(error => {
           this.setState({ showErrorMsg: true });
-        }
-      })
-      .catch(error => {
-        this.setState({ showErrorMsg: true });
-      });
-
-      this.props.history.goBack();
+        });
+    }
+    this.props.history.goBack();
   };
 
   render() {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-        <h2>Update Groceries</h2>
+          <h2>Update Groceries</h2>
           <FormGroup controlId="itemname" bssize="large">
             <FormLabel>itemname</FormLabel>
             <FormControl
