@@ -66,3 +66,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Summary
+
+This app basically makes API calls to backend to do CRUD operations on groceries.
+With the groceries information we can then determine from a list of recipes which ones have enough ingredients.
+
+Future frontend work will be to make a meal planner form which user can save, currently the backend code should be able to support the required CRUD operations for /mealplans
