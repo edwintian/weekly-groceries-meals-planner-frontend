@@ -62,7 +62,6 @@ class GroceryUpdateForm extends React.Component {
           }
         })
         .then(response => {
-          console.log(response);
           if (Number(response.status) === 201) {
           } else {
             this.setState({ showErrorMsg: true });
@@ -78,7 +77,6 @@ class GroceryUpdateForm extends React.Component {
         }
       })
         .then(response => {
-          console.log(response);
           if (Number(response.status) === 201) {
           } else {
             this.setState({ showErrorMsg: true });

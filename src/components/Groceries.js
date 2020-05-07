@@ -21,7 +21,6 @@ class Groceries extends React.Component {
   }
 
   render() {
-        console.log("Groceries is rendered");
     return (
       <div className="container">
         <h2> What You Have Now </h2>
