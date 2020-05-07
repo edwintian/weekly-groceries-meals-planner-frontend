@@ -7,7 +7,6 @@ class Recipes extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: false,
       recipes: null
     };
   }
@@ -23,26 +22,22 @@ class Recipes extends React.Component {
   ingredientCheck = recipeIngredients => {
     let checkResult = "Enough :)";
     let allIngredients = {};
+    let allIngredientsArray = this.props.ingredientsInStock;
+    if (Array.isArray(allIngredientsArray) && allIngredientsArray.length > 0) {
+      allIngredientsArray.map(
+        item => (allIngredients[item.userIdWithItemName] = item.quantity)
+      );
 
-    if (this.props.ingredientsInStock) {
-    this.props.ingredientsInStock.map(
-      item => (allIngredients[item.userIdWithItemName] = item.quantity)
-    );
-    }
-    for (const item of recipeIngredients.split(";")) {
-      const itemName = item.split("_")[1];
-      const itemCount = item.split("_")[0];
-      if (!(itemName in allIngredients && allIngredients[itemName] >= itemCount)) {
-        checkResult = "Not enough";
+      for (const item of recipeIngredients.split(";")) {
+        const itemName = item.split("_")[1];
+        const itemCount = item.split("_")[0];
+        if (
+          !(itemName in allIngredients && allIngredients[itemName] >= itemCount)
+        ) {
+          checkResult = "Not enough";
+        }
       }
     }
-    // recipeIngredients.split(";").map(item => {
-    //   const itemName = item.split("_")[1];
-    //   const itemCount = item.split("_")[0];
-    //   if (!(itemName in allIngredients && allIngredients[itemName] >= itemCount)) {
-    //     checkResult = "Not enough";
-    //   }
-    // });
     return checkResult;
   };
 

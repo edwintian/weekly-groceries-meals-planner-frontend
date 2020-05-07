@@ -52,7 +52,6 @@ class GroceryUpdateForm extends React.Component {
 
     const method = this.props.location.state.method || "put";
     if (Number(payload.quantity) === 0) {
-      console.log("payload is " + payload);
       axios
         .delete(URL, {
           headers: {
