@@ -97,9 +97,9 @@ class Register extends React.Component {
           </Button>
           {this.state.showRegisterErrorMsg && (
             <p>
-              Registration unsuccessful, please try again. Ensure your username
-              is alphanumeric and at least 3 characters long, password must be
-              at least 8 characters long.
+              Registration unsuccessful. Ensure your username
+              is alphanumeric and at least 3 characters long, chosen password must be
+              at least 8 characters long. If all else fails, contact your superadmin!
             </p>
           )}
           {this.state.showRegisterSuccessMsg && (

@@ -26,13 +26,20 @@ class Recipes extends React.Component {
     this.props.ingredientsInStock.map(
       item => (allIngredients[item.userIdWithItemName] = item.quantity)
     );
-    recipeIngredients.split(";").map(item => {
+    for (const item of recipeIngredients.split(";")) {
       const itemName = item.split("_")[1];
       const itemCount = item.split("_")[0];
       if (!(itemName in allIngredients && allIngredients[itemName] >= itemCount)) {
         checkResult = "Not enough";
       }
-    });
+    }
+    // recipeIngredients.split(";").map(item => {
+    //   const itemName = item.split("_")[1];
+    //   const itemCount = item.split("_")[0];
+    //   if (!(itemName in allIngredients && allIngredients[itemName] >= itemCount)) {
+    //     checkResult = "Not enough";
+    //   }
+    // });
     return checkResult;
   };
 
