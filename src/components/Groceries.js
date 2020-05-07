@@ -24,6 +24,7 @@ class Groceries extends React.Component {
     return (
       <div className="container">
         <h2> What You Have Now </h2>
+        <p>Click on grocery link to update grocery</p>
         <div className="table">
           {this.state.groceries === null && <p>Loading groceries...</p>}
           <table>

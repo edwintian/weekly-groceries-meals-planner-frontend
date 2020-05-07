@@ -9,7 +9,7 @@ class GroceryUpdateForm extends React.Component {
     this.state = {
       itemname: this.props.match.params.id || "",
       quantity: this.props.location.state.quantity || "",
-      unit: this.props.location.state.unit || "",
+      unit: this.props.location.state.unit || "servings",
       showErrorMsg: false
     };
   }
@@ -52,14 +52,13 @@ class GroceryUpdateForm extends React.Component {
 
     const method = this.props.location.state.method || "put";
     if (Number(payload.quantity) === 0) {
+      console.log("payload is " + payload);
       axios
         .delete(URL, {
           headers: {
             "content-type": "application/json"
           },
-          data: {
-            payload
-          }
+          data: {payload}
         })
         .then(response => {
           if (Number(response.status) === 201) {
@@ -130,9 +129,9 @@ class GroceryUpdateForm extends React.Component {
           </Button>
           {this.state.showErrorMsg && (
             <p>
-              Unable to update or remove groceries, please ensure that itemName only
-              consists of space or alphanumeric characters and quantity is at
-              least 0.
+              Unable to update or remove groceries, please ensure that itemName
+              only consists of space or alphanumeric characters and quantity is
+              at least 0.
             </p>
           )}
         </form>

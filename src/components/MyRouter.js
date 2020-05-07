@@ -4,6 +4,7 @@ import HomePage from "./HomePage";
 import Logout from "./Logout";
 import Register from "./Register";
 import GroceryUpdateForm from "./GroceryUpdateForm";
+import RecipeUpdateForm from "./RecipeUpdateForm";
 
 export default props => (
   <div>
@@ -19,6 +20,7 @@ export default props => (
           />
         )}
       />
+      <Route exact path="/dashboard/recipes/:id" component={RecipeUpdateForm} />
       <Route exact path="/dashboard/:id" component={GroceryUpdateForm} />
       <Route exact path="/register" component={Register} />
       <Route
