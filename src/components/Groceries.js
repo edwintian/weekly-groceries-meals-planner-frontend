@@ -18,6 +18,7 @@ class Groceries extends React.Component {
     this.setState({
       groceries
     });
+    this.props.updateIngredientStockState(groceries);
   }
 
   render() {
@@ -30,7 +31,7 @@ class Groceries extends React.Component {
           <table>
             <thead>
               <tr>
-                <th>Ingredients</th>
+                <th>Grocery</th>
                 <th>Quantity</th>
               </tr>
             </thead>

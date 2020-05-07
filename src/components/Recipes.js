@@ -20,6 +20,11 @@ class Recipes extends React.Component {
     });
   }
 
+  ingredientCheck = (recipeIngredients) => {
+    console.log(this.props.ingredientsInStock);
+    return "maybe?";
+  }
+
   render() {
     return (
       <div className="container">
@@ -41,7 +46,7 @@ class Recipes extends React.Component {
                       <td>
                         {item.userIdWithRecipeName}
                       </td>
-                      <td>{item.concatenatedIngredients}</td>
+                      <td>{this.ingredientCheck(item.concatenatedIngredients)}</td>
                     </tr>
                   ))}
             </tbody>
