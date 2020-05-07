@@ -23,9 +23,13 @@ class Recipes extends React.Component {
   ingredientCheck = recipeIngredients => {
     let checkResult = "Enough :)";
     let allIngredients = {};
+    console.log(this.props.ingredientsInStock);
+
+    if (this.props.ingredientsInStock) {
     this.props.ingredientsInStock.map(
       item => (allIngredients[item.userIdWithItemName] = item.quantity)
     );
+    }
     for (const item of recipeIngredients.split(";")) {
       const itemName = item.split("_")[1];
       const itemCount = item.split("_")[0];
