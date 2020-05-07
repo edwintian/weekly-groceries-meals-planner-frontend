@@ -23,7 +23,6 @@ class Recipes extends React.Component {
   ingredientCheck = recipeIngredients => {
     let checkResult = "Enough :)";
     let allIngredients = {};
-    console.log(this.props.ingredientsInStock);
 
     if (this.props.ingredientsInStock) {
     this.props.ingredientsInStock.map(
