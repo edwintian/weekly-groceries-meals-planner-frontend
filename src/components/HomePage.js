@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import NavBar from "./NavBar";
+import React from "react";
 import Groceries from "./Groceries";
 import Login from "./Login";
 
@@ -8,10 +7,7 @@ class HomePage extends React.Component {
     return (
       <div>
         {this.props.isAuthenticated ? (
-          <Fragment>
-            <NavBar />
-            <Groceries userId={this.props.userId} />
-          </Fragment>
+          <Groceries userId={this.props.userId} />
         ) : (
           <Login
             updateAuthenticatedState={this.props.updateAuthenticatedState}

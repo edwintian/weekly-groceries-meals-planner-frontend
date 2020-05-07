@@ -95,7 +95,8 @@ class GroceryUpdateForm extends React.Component {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <h2>Update Groceries</h2>
+          <h2>Update Grocery</h2>
+          <p>Set quantity to 0 to remove item from dashboard</p>
           <FormGroup controlId="itemname" bssize="large">
             <FormLabel>itemname</FormLabel>
             <FormControl
@@ -131,7 +132,7 @@ class GroceryUpdateForm extends React.Component {
           </Button>
           {this.state.showErrorMsg && (
             <p>
-              Unable to update groceries, please ensure that itemName only
+              Unable to update or remove groceries, please ensure that itemName only
               consists of space or alphanumeric characters and quantity is at
               least 0.
             </p>

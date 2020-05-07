@@ -2,14 +2,11 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./HomePage";
 import Logout from "./Logout";
-import Login from "./Login";
 import Register from "./Register";
-import NavBar from "./NavBar";
 import GroceryUpdateForm from "./GroceryUpdateForm";
 
 export default props => (
   <div>
-    <NavBar />
     <Switch>
       <Route
         exact
@@ -39,7 +36,7 @@ export default props => (
         exact
         path="/login"
         render={() => (
-          <Login
+          <HomePage
             isAuthenticated={props.isAuthenticated}
             userId={props.userId}
             updateAuthenticatedState={props.updateAuthenticatedState}

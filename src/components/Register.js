@@ -104,7 +104,7 @@ class Register extends React.Component {
           )}
           {this.state.showRegisterSuccessMsg && (
             <p>
-              Registration successful, please click on the Dashboard link to login.
+              Registration successful, please login to continue.
             </p>
           )}
         </form>
