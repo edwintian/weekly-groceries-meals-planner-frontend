@@ -20,10 +20,21 @@ class Recipes extends React.Component {
     });
   }
 
-  ingredientCheck = (recipeIngredients) => {
-    console.log(this.props.ingredientsInStock);
-    return "maybe?";
-  }
+  ingredientCheck = recipeIngredients => {
+    let checkResult = "Enough :)";
+    let allIngredients = {};
+    this.props.ingredientsInStock.map(
+      item => (allIngredients[item.userIdWithItemName] = item.quantity)
+    );
+    recipeIngredients.split(";").map(item => {
+      const itemName = item.split("_")[1];
+      const itemCount = item.split("_")[0];
+      if (!(itemName in allIngredients && allIngredients[itemName] >= itemCount)) {
+        checkResult = "Not enough";
+      }
+    });
+    return checkResult;
+  };
 
   render() {
     return (
@@ -40,15 +51,14 @@ class Recipes extends React.Component {
             </thead>
             <tbody>
               {this.state.recipes &&
-                this.state.recipes
-                  .map(item => (
-                    <tr key={item.userIdWithRecipeName}>
-                      <td>
-                        {item.userIdWithRecipeName}
-                      </td>
-                      <td>{this.ingredientCheck(item.concatenatedIngredients)}</td>
-                    </tr>
-                  ))}
+                this.state.recipes.map(item => (
+                  <tr key={item.userIdWithRecipeName}>
+                    <td>{item.userIdWithRecipeName}</td>
+                    <td>
+                      {this.ingredientCheck(item.concatenatedIngredients)}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
           {
