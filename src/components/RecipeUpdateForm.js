@@ -64,8 +64,7 @@ class RecipeUpdateForm extends React.Component {
         this.setState({ showErrorMsg: true });
       });
 
-    //this.props.history.goBack();
-    this.props.history.push("/");
+    this.props.history.goBack();
   };
 
   render() {
