@@ -13,7 +13,6 @@ class Groceries extends React.Component {
   }
 
   async componentDidMount() {
-    console.log("Grocery componentDidMount");
     const URL = "/users/" + this.props.userId + "/groceries";
     const groceries = (await axios.get(URL)).data;
     this.setState({
@@ -23,7 +22,6 @@ class Groceries extends React.Component {
   }
 
   render() {
-    console.log("Grocery rendering");
     return (
       <div className="container">
         <h2> What You Have Now </h2>
