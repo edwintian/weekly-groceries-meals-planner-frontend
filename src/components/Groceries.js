@@ -13,6 +13,7 @@ class Groceries extends React.Component {
   }
 
   async componentDidMount() {
+    console.log("Grocery componentDidMount");
     const URL = "/users/" + this.props.userId + "/groceries";
     const groceries = (await axios.get(URL)).data;
     this.setState({
