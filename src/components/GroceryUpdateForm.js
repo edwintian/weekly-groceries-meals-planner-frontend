@@ -84,7 +84,7 @@ class GroceryUpdateForm extends React.Component {
           this.setState({ showErrorMsg: true });
         });
     }
-    this.props.history.push('/dashboard');
+    this.props.history.push('/');
   };
 
   render() {
