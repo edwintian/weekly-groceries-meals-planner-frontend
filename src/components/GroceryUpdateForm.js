@@ -57,7 +57,7 @@ class GroceryUpdateForm extends React.Component {
           headers: {
             "content-type": "application/json"
           },
-          data: {payload}
+          data: { payload }
         })
         .then(response => {
           if (Number(response.status) === 201) {
@@ -84,7 +84,11 @@ class GroceryUpdateForm extends React.Component {
           this.setState({ showErrorMsg: true });
         });
     }
-    this.props.history.push('/');
+    if (this.props.renderGroceries) {
+      this.props.renderGroceries("dummy");
+    } else {
+      this.props.history.push("/");
+    }
   };
 
   render() {

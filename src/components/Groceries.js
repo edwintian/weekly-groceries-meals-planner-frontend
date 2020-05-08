@@ -7,9 +7,15 @@ class Groceries extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: false,
+      needToRender: "dummy",
       groceries: null
     };
+  }
+
+  renderGroceries = (input) => {
+    this.setState({
+      needToRender: input
+    });
   }
 
   async componentDidMount() {
@@ -45,7 +51,8 @@ class Groceries extends React.Component {
                           to={{
                             pathname: `/dashboard/${item.userIdWithItemName}`,
                             state: {
-                              userId: this.props.userId
+                              userId: this.props.userId,
+                              renderGroceries: this.renderGroceries
                             }
                           }}
                         >
