@@ -85,7 +85,7 @@ class GroceryUpdateForm extends React.Component {
         });
     }
 
-    this.props.history.push("/");
+    this.props.history.goback();
   };
 
   render() {
