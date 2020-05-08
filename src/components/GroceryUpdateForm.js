@@ -84,11 +84,8 @@ class GroceryUpdateForm extends React.Component {
           this.setState({ showErrorMsg: true });
         });
     }
-    if (this.props.renderGroceries) {
-      this.props.renderGroceries("dummy");
-    } else {
-      this.props.history.push("/");
-    }
+
+    this.props.history.push("/");
   };
 
   render() {
