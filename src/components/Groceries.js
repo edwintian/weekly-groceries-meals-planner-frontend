@@ -22,6 +22,7 @@ class Groceries extends React.Component {
   }
 
   render() {
+    console.log("Grocery rendering");
     return (
       <div className="container">
         <h2> What You Have Now </h2>
