@@ -19,6 +19,7 @@ class HomePage extends React.Component {
   };
 
   render() {
+    console.log("Homepage rendering");
     return (
       <div className="parent">
         {this.props.isAuthenticated ? (
