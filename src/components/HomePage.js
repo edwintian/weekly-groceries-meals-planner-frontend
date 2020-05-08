@@ -16,6 +16,7 @@ class HomePage extends React.Component {
     this.setState({
       ingredientStock: takeStock
     });
+    console.log("Done update ingredientStockState", this.state.ingredientStock);
   };
 
   render() {
