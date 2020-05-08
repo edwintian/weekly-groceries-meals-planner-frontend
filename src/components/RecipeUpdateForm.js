@@ -8,7 +8,8 @@ class RecipeUpdateForm extends React.Component {
     super(props);
     this.state = {
       recipename: this.props.match.params.id || "",
-      concatenatedIngredients: this.props.location.state.concatenatedIngredients || "",
+      concatenatedIngredients:
+        this.props.location.state.concatenatedIngredients || "",
       showErrorMsg: false
     };
   }
@@ -32,8 +33,7 @@ class RecipeUpdateForm extends React.Component {
   };
 
   validateForm = () => {
-    const isValidated =
-      this.isAlphaNumericOrSpace(this.state.recipename)
+    const isValidated = this.isAlphaNumericOrSpace(this.state.recipename);
     return isValidated;
   };
 
@@ -64,7 +64,7 @@ class RecipeUpdateForm extends React.Component {
         this.setState({ showErrorMsg: true });
       });
 
-    this.props.history.goback();
+    this.props.history.goBack();
   };
 
   render() {
@@ -87,7 +87,9 @@ class RecipeUpdateForm extends React.Component {
             <FormLabel>ingredients</FormLabel>
             <FormControl
               value={this.state.concatenatedIngredients}
-              onChange={e => this.setState({ concatenatedIngredients: e.target.value })}
+              onChange={e =>
+                this.setState({ concatenatedIngredients: e.target.value })
+              }
               type="ingredients"
             />
           </FormGroup>
@@ -102,7 +104,8 @@ class RecipeUpdateForm extends React.Component {
           {this.state.showErrorMsg && (
             <p>
               Unable to update or remove recipes, please ensure that recipename
-              only consists of space or alphanumeric characters and follow the format for ingredients.
+              only consists of space or alphanumeric characters and follow the
+              format for ingredients.
             </p>
           )}
         </form>
